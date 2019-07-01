@@ -1,4 +1,4 @@
-package com.ambulance.incident.incident.heroku;
+package yello.amo.heroku;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
