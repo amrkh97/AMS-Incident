@@ -3,6 +3,7 @@ package yello.amo;
 import java.util.ArrayList;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.Response;
 import BLL.*;
 import Models.Incident.*;
 import Models.Priority.PrioritiesData;
+import Models.IncidentType.*;
 
 /**
  * Root resource (exposed at "api" path)
@@ -70,5 +72,13 @@ public class Services {
 			return Response.ok(PriorityManager.deletePriority(Priority)).build();
 		}
 	}
+	@DELETE
+    @Path("Incident/deleteIncident")
+    @Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
+    public Response deleteIncidentType(IncidentType incidentType)
+    {
+    	return Response.ok(IncidentManager.deleteIncident(incidentType)).build();
+    }
 
 }
