@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 
 import BLL.*;
 import Models.Incident.*;
+import Models.Priority.PrioritiesData;
 
 /**
  * Root resource (exposed at "api" path)
@@ -44,6 +45,30 @@ public class Services {
 			return Response.ok(" No Location ID Provided ").build();
 		}
 
+	}
+	////////////////////////////////////////////////////////////////////////////////////
+	@POST
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("Priorities/addpriority")
+	public Response InsertPriority(PrioritiesData Priority) {
+		if(Priority.getPrioname().equals(null) ||  Priority.getPrioname().equals("")) {
+			return Response.ok(" No Priority Name Provided ").build();
+		} else {
+			return Response.ok(PriorityManager.addPriority(Priority)).build();
+		}
+	}
+	///////////////////////////////////////////////////////////////////////////////////////////
+	@POST
+	@Produces(MediaType.TEXT_PLAIN)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("Priorities/deletepriority")
+	public Response DeletePriority(PrioritiesData Priority) {
+		if(Priority.getPrioname().equals(null) ||  Priority.getPrioname().equals("")) {
+			return Response.ok(" No Priority Name Provided ").build();
+		} else {
+			return Response.ok(PriorityManager.deletePriority(Priority)).build();
+		}
 	}
 
 }
