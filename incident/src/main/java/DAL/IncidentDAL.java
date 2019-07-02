@@ -10,7 +10,7 @@ import Models.Incident.*;
 
 public class IncidentDAL {
 
-	public static InsertIncidentResponse addLocation(InsertIncident Incident) {
+	public static InsertIncidentResponse addIncident(InsertIncident Incident) {
 
 		String SPsql = "EXEC usp_Incident_Insert ?,?,?,?,?,?";
 		Connection conn = DBManager.getDBConn();

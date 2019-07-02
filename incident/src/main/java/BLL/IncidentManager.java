@@ -5,7 +5,7 @@ import Models.Incident.*;
 
 public class IncidentManager {
 	public static InsertIncidentResponse addIncident(InsertIncident Incident) {
-		return IncidentDAL.addLocation(Incident);
+		return IncidentDAL.addIncident(Incident);
 	}
 
 }
