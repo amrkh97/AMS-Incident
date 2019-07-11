@@ -36,15 +36,15 @@ public class Services {
 		if (!(Incident.getIncidentLocationID() <= 0)) {
 			if (!(Incident.getIncidentPriority() <= 0)) {
 				if (!(Incident.getIncidentType() <= 0)) {
-					return Response.ok(IncidentManager.addIncident(Incident)).build();
+					return Response.ok(IncidentManager.addIncident(Incident)).header("Access-Control-Allow-Origin", "*").build();
 				} else {
-					return Response.ok(" No Type ID Provided ").build();
+					return Response.ok(" No Type ID Provided ").header("Access-Control-Allow-Origin", "*").build();
 				}
 			} else {
-				return Response.ok(" No Priority ID Provided ").build();
+				return Response.ok(" No Priority ID Provided ").header("Access-Control-Allow-Origin", "*").build();
 			}
 		} else {
-			return Response.ok(" No Location ID Provided ").build();
+			return Response.ok(" No Location ID Provided ").header("Access-Control-Allow-Origin", "*").build();
 		}
 
 	}
@@ -55,9 +55,9 @@ public class Services {
 	@Path("Priorities/addpriority")
 	public Response InsertPriority(PrioritiesData Priority) {
 		if(Priority.getPrioname().equals(null) ||  Priority.getPrioname().equals("")) {
-			return Response.ok(" No Priority Name Provided ").build();
+			return Response.ok(" No Priority Name Provided ").header("Access-Control-Allow-Origin", "*").build();
 		} else {
-			return Response.ok(PriorityManager.addPriority(Priority)).build();
+			return Response.ok(PriorityManager.addPriority(Priority)).header("Access-Control-Allow-Origin", "*").build();
 		}
 	}
 	///////////////////////////////////////////////////////////////////////////////////////////
@@ -67,9 +67,9 @@ public class Services {
 	@Path("Priorities/deletepriority")
 	public Response DeletePriority(PrioritiesData Priority) {
 		if(Priority.getPrioname().equals(null) ||  Priority.getPrioname().equals("")) {
-			return Response.ok(" No Priority Name Provided ").build();
+			return Response.ok(" No Priority Name Provided ").header("Access-Control-Allow-Origin", "*").build();
 		} else {
-			return Response.ok(PriorityManager.deletePriority(Priority)).build();
+			return Response.ok(PriorityManager.deletePriority(Priority)).header("Access-Control-Allow-Origin", "*").build();
 		}
 	}
 	@DELETE
@@ -78,7 +78,7 @@ public class Services {
 	@Produces(MediaType.TEXT_HTML)
     public Response deleteIncidentType(IncidentType incidentType)
     {
-    	return Response.ok(IncidentManager.deleteIncident(incidentType)).build();
+    	return Response.ok(IncidentManager.deleteIncident(incidentType)).header("Access-Control-Allow-Origin", "*").build();
     }
 
 }
