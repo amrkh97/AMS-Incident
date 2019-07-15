@@ -4,6 +4,11 @@ public class InsertIncident {
 	private int incidentType;
 	private int incidentPriority;
 	private int incidentLocationID;
+	private String callerFName;
+	private String callerLName;
+	private String callerMobile;
+	
+	
 	public int getIncidentType() {
 		return incidentType;
 	}
@@ -21,6 +26,24 @@ public class InsertIncident {
 	}
 	public void setIncidentLocationID(int incidentLocationID) {
 		this.incidentLocationID = incidentLocationID;
+	}
+	public String getCallerMobile() {
+		return callerMobile;
+	}
+	public void setCallerMobile(String callerMobile) {
+		this.callerMobile = callerMobile;
+	}
+	public String getCallerLName() {
+		return callerLName;
+	}
+	public void setCallerLName(String callerLName) {
+		this.callerLName = callerLName;
+	}
+	public String getCallerFName() {
+		return callerFName;
+	}
+	public void setCallerFName(String callerFName) {
+		this.callerFName = callerFName;
 	}
 
 }

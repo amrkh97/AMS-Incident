@@ -1,7 +1,5 @@
 package yello.amo;
 
-import java.util.ArrayList;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -38,13 +36,13 @@ public class Services {
 				if (!(Incident.getIncidentType() <= 0)) {
 					return Response.ok(IncidentManager.addIncident(Incident)).header("Access-Control-Allow-Origin", "*").build();
 				} else {
-					return Response.ok(" No Type ID Provided ").header("Access-Control-Allow-Origin", "*").build();
+					return Response.status(401," No Type ID Provided ").header("Access-Control-Allow-Origin", "*").build();
 				}
 			} else {
-				return Response.ok(" No Priority ID Provided ").header("Access-Control-Allow-Origin", "*").build();
+				return Response.status(402," No Priority ID Provided ").header("Access-Control-Allow-Origin", "*").build();
 			}
 		} else {
-			return Response.ok(" No Location ID Provided ").header("Access-Control-Allow-Origin", "*").build();
+			return Response.status(403," No Location ID Provided ").header("Access-Control-Allow-Origin", "*").build();
 		}
 
 	}
