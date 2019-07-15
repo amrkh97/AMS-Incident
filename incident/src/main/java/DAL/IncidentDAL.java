@@ -27,6 +27,11 @@ public class IncidentDAL {
 			IncidentData.setiSN(cstmt.getInt(6));
 			IncidentData.setHexReturn(cstmt.getString(4));
 			IncidentData.setResponseMsg(cstmt.getString(5));
+
+			if (IncidentData.getHexReturn().equals("00")) {
+				AddCallerInformation(IncidentData.getiSN(),Incident.getCallerFName(),Incident.getCallerLName(),Incident.getCallerMobile(),conn);
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,5 +46,25 @@ public class IncidentDAL {
 		}
 
 		return IncidentData;
+	}
+
+	public static ServerResponse AddCallerInformation(Integer iSQN,String fName,String lName, String mobileNumber,Connection connection) {
+		String SPsql = "EXEC usp_Incident_InsertCallData ?,?,?,?,?";
+		Connection conn = connection;
+		ServerResponse serverData = new ServerResponse();
+		try {
+			CallableStatement cstmt = conn.prepareCall(SPsql);
+			cstmt.setInt(1, iSQN);
+			cstmt.setString(2, fName);
+			cstmt.setString(3, lName);
+			cstmt.setString(4, mobileNumber);
+			cstmt.registerOutParameter(5, Types.NVARCHAR);
+			cstmt.executeUpdate();
+			serverData.setResponseHexCode(cstmt.getString(5));
+			} catch (SQLException e) {
+					// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return serverData;	
 	}
 }
