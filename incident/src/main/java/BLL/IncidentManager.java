@@ -1,9 +1,7 @@
 package BLL;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Types;
 
 import DAL.IncidentDAL;
 import Models.Callers.AddCallerModel;

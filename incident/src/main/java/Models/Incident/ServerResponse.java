@@ -1,7 +1,5 @@
 package Models.Incident;
 
-import java.util.List;
-
 public class ServerResponse {
 
 	protected String responseHexCode;

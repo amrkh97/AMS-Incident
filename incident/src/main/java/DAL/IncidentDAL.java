@@ -115,42 +115,5 @@ public class IncidentDAL {
 		callersArray.setCallersList(arrayList);
 		return callersArray;
 	}
-
-	
-//	public static ServerResponse addCaller(Integer iSQN, String fName,String lName, String mobileNumber) {
-//		ServerResponse response = new ServerResponse();
-//		String SPsql = "EXEC usp_Incident_InsertCallData ?,?,?,?,?";
-//		Connection conn = DBManager.getDBConn();
-//		try {
-//
-//			CallableStatement cstmt = conn.prepareCall(SPsql);
-//			cstmt.setInt(1, iSQN);
-//			cstmt.setString(2, fName);
-//			cstmt.setString(3, lName);
-//			cstmt.setString(4, mobileNumber);
-//			cstmt.registerOutParameter(5, Types.NVARCHAR);
-//			cstmt.executeUpdate();
-//			response.setResponseHexCode(cstmt.getString(5));
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			try {
-//				conn.close();
-//				System.out.println("Connection Closed");
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//		if(response.getResponseHexCode().equals("00")) {
-//			response.setResponseMsg("Added Succesfully");
-//		}else {
-//			response.setResponseMsg("Addition Failed, This Number is already registered to this incident.");
-//		}
-//
-//		return response;
-//	}
-//	
 	
 }
