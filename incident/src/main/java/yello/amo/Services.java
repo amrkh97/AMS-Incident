@@ -10,6 +10,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import BLL.*;
+import Models.Callers.AddCallerModel;
+import Models.Callers.ServerResponse;
+import Models.Data.DataModel;
 import Models.Incident.*;
 import Models.Priority.PrioritiesData;
 import Models.IncidentType.*;
@@ -78,5 +81,32 @@ public class Services {
     {
     	return Response.ok(IncidentManager.deleteIncident(incidentType)).header("Access-Control-Allow-Origin", "*").build();
     }
+	
+	
+	@Path("incident/getCallers")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getCallers(DataModel Incident) {
+
+		return Response.ok(IncidentManager.getCallers(Incident)).build();
+	}
+
+	@Path("incident/addCaller")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addCaller(AddCallerModel caller) {
+		ServerResponse response = new ServerResponse();
+		response = IncidentManager.addCaller(caller);
+
+		switch (response.getResponseHexCode()) {
+		case "01":
+			return Response.status(401,response.getResponseMsg()).build();
+		default:
+			return Response.ok(response).build();
+		}
+
+	}
 
 }

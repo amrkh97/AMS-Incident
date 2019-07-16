@@ -1,4 +1,4 @@
-package Models.Incident;
+package Models.Callers;
 
 public class ServerResponse {
 
@@ -32,4 +32,5 @@ public class ServerResponse {
 	public void setResponseMsg(String responseMsg) {
 		this.responseMsg = responseMsg;
 	}
+
 }
