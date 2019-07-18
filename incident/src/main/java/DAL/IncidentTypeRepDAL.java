@@ -104,7 +104,7 @@ public class IncidentTypeRepDAL {
 				incidentType.setTypeNote(resultSet.getString("TypeNote"));
 				incidentTypeList.add(incidentType);
 			}
-			
+			resultSet.close();
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}
