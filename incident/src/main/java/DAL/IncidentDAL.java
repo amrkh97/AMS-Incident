@@ -101,6 +101,7 @@ public class IncidentDAL {
 
 				arrayList.add(callerModel);
 			}
+			resultSet.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

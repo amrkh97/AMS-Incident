@@ -35,7 +35,7 @@ public class PrioritiesDAL {
 						   resultSet.getString(3) + ", "
 								   );
 			}
-			
+			resultSet.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
