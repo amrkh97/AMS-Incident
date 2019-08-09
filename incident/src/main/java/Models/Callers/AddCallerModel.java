@@ -5,6 +5,7 @@ public class AddCallerModel {
 	private String fName;
 	private String lName;
 	private String mobileNumber;
+	private String relationToPatient;
 	
 	public Integer getiSQN() {
 		return iSQN;
@@ -29,6 +30,12 @@ public class AddCallerModel {
 	}
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
+	}
+	public String getRelationToPatient() {
+		return relationToPatient;
+	}
+	public void setRelationToPatient(String relationToPatient) {
+		this.relationToPatient = relationToPatient;
 	}
 
 }

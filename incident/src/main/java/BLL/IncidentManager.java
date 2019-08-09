@@ -31,7 +31,7 @@ public class IncidentManager {
 		Connection connection = DBManager.getDBConn();
 		try {
 			return IncidentDAL.AddCallerInformation(caller.getiSQN(), caller.getfName(), caller.getlName(),
-					caller.getMobileNumber(), connection);
+					caller.getMobileNumber(),caller.getRelationToPatient(), connection);
 
 		} finally {
 			try {
