@@ -34,7 +34,7 @@ public class IncidentDAL {
 			IncidentData.setResponseMsg(cstmt.getString(5));
 
 			if (IncidentData.getHexReturn().equals("00")) {
-				AddCallerInformation(IncidentData.getiSN(),Incident.getCallerFName(),Incident.getCallerLName(),Incident.getCallerMobile(),conn);
+				AddCallerInformation(IncidentData.getiSN(),Incident.getCallerFName(),Incident.getCallerLName(),Incident.getCallerMobile(),Incident.getRelationToPatient(),conn);
 			}
 
 		} catch (SQLException e) {
@@ -53,8 +53,8 @@ public class IncidentDAL {
 		return IncidentData;
 	}
 
-	public static ServerResponse AddCallerInformation(Integer iSQN,String fName,String lName, String mobileNumber,Connection connection) {
-		String SPsql = "EXEC usp_Incident_InsertCallData ?,?,?,?,?";
+	public static ServerResponse AddCallerInformation(Integer iSQN,String fName,String lName, String mobileNumber,String relationToPatient,Connection connection) {
+		String SPsql = "EXEC usp_Incident_InsertCallData ?,?,?,?,?,?";
 		Connection conn = connection;
 		ServerResponse serverData = new ServerResponse();
 		try {
@@ -63,9 +63,10 @@ public class IncidentDAL {
 			cstmt.setString(2, fName);
 			cstmt.setString(3, lName);
 			cstmt.setString(4, mobileNumber);
-			cstmt.registerOutParameter(5, Types.NVARCHAR);
+			cstmt.setString(5, relationToPatient);
+			cstmt.registerOutParameter(6, Types.NVARCHAR);
 			cstmt.executeUpdate();
-			serverData.setResponseHexCode(cstmt.getString(5));
+			serverData.setResponseHexCode(cstmt.getString(6));
 			} catch (SQLException e) {
 					// TODO Auto-generated catch block
 				e.printStackTrace();
