@@ -7,6 +7,7 @@ public class InsertIncident {
 	private String callerFName;
 	private String callerLName;
 	private String callerMobile;
+	private String relationToPatient;
 	
 	
 	public int getIncidentType() {
@@ -44,6 +45,12 @@ public class InsertIncident {
 	}
 	public void setCallerFName(String callerFName) {
 		this.callerFName = callerFName;
+	}
+	public String getRelationToPatient() {
+		return relationToPatient;
+	}
+	public void setRelationToPatient(String relationToPatient) {
+		this.relationToPatient = relationToPatient;
 	}
 
 }
