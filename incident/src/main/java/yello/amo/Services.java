@@ -26,7 +26,7 @@ public class Services {
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getIt() {
-		return "Server is Running ..!";
+		return "Incident Services Are Running!";
 	}
 
 	@Path("addIncident")
@@ -34,18 +34,23 @@ public class Services {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response InsertIncident(InsertIncident Incident) {
+		ServerResponse response = new ServerResponse();
+		
 		if (!(Incident.getIncidentLocationID() <= 0)) {
 			if (!(Incident.getIncidentPriority() <= 0)) {
 				if (!(Incident.getIncidentType() <= 0)) {
 					return Response.ok(IncidentManager.addIncident(Incident)).header("Access-Control-Allow-Origin", "*").build();
 				} else {
-					return Response.status(401," No Type ID Provided ").header("Access-Control-Allow-Origin", "*").build();
+					response.setResponseMsg("A01003001001");
+					return Response.status(401).entity(response).header("Access-Control-Allow-Origin", "*").build();
 				}
 			} else {
-				return Response.status(402," No Priority ID Provided ").header("Access-Control-Allow-Origin", "*").build();
+				response.setResponseMsg("A01003001001");
+				return Response.status(402).entity(response).header("Access-Control-Allow-Origin", "*").build();
 			}
 		} else {
-			return Response.status(403," No Location ID Provided ").header("Access-Control-Allow-Origin", "*").build();
+			response.setResponseMsg("A01003001001");
+			return Response.status(403).entity(response).header("Access-Control-Allow-Origin", "*").build();
 		}
 
 	}
@@ -55,8 +60,10 @@ public class Services {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("Priorities/addpriority")
 	public Response InsertPriority(PrioritiesData Priority) {
+		ServerResponse response = new ServerResponse();
 		if(Priority.getPrioname().equals(null) ||  Priority.getPrioname().equals("")) {
-			return Response.ok(" No Priority Name Provided ").header("Access-Control-Allow-Origin", "*").build();
+			response.setResponseMsg("A01003002001");
+			return Response.status(401).entity(response).header("Access-Control-Allow-Origin", "*").build();
 		} else {
 			return Response.ok(PriorityManager.addPriority(Priority)).header("Access-Control-Allow-Origin", "*").build();
 		}
@@ -67,8 +74,10 @@ public class Services {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("Priorities/deletepriority")
 	public Response DeletePriority(PrioritiesData Priority) {
+		ServerResponse response = new ServerResponse();
 		if(Priority.getPrioname().equals(null) ||  Priority.getPrioname().equals("")) {
-			return Response.ok(" No Priority Name Provided ").header("Access-Control-Allow-Origin", "*").build();
+			response.setResponseMsg("A01003003001");
+			return Response.status(401).entity(response).header("Access-Control-Allow-Origin", "*").build();
 		} else {
 			return Response.ok(PriorityManager.deletePriority(Priority)).header("Access-Control-Allow-Origin", "*").build();
 		}
@@ -102,7 +111,8 @@ public class Services {
 
 		switch (response.getResponseHexCode()) {
 		case "01":
-			return Response.status(401,response.getResponseMsg()).build();
+			response.setResponseMsg("A01003006001");
+			return Response.status(401).entity(response).build();
 		default:
 			return Response.ok(response).build();
 		}
