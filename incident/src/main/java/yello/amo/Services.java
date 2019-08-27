@@ -41,15 +41,15 @@ public class Services {
 				if (!(Incident.getIncidentType() <= 0)) {
 					return Response.ok(IncidentManager.addIncident(Incident)).header("Access-Control-Allow-Origin", "*").build();
 				} else {
-					response.setResponseMsg("A01003001001");
+					response.setResponseHexCode("A01003001001");
 					return Response.status(401).entity(response).header("Access-Control-Allow-Origin", "*").build();
 				}
 			} else {
-				response.setResponseMsg("A01003001001");
+				response.setResponseHexCode("A01003001001");
 				return Response.status(402).entity(response).header("Access-Control-Allow-Origin", "*").build();
 			}
 		} else {
-			response.setResponseMsg("A01003001001");
+			response.setResponseHexCode("A01003001001");
 			return Response.status(403).entity(response).header("Access-Control-Allow-Origin", "*").build();
 		}
 
@@ -62,7 +62,7 @@ public class Services {
 	public Response InsertPriority(PrioritiesData Priority) {
 		ServerResponse response = new ServerResponse();
 		if(Priority.getPrioname().equals(null) ||  Priority.getPrioname().equals("")) {
-			response.setResponseMsg("A01003002001");
+			response.setResponseHexCode("A01003002001");
 			return Response.status(401).entity(response).header("Access-Control-Allow-Origin", "*").build();
 		} else {
 			return Response.ok(PriorityManager.addPriority(Priority)).header("Access-Control-Allow-Origin", "*").build();
@@ -76,7 +76,7 @@ public class Services {
 	public Response DeletePriority(PrioritiesData Priority) {
 		ServerResponse response = new ServerResponse();
 		if(Priority.getPrioname().equals(null) ||  Priority.getPrioname().equals("")) {
-			response.setResponseMsg("A01003003001");
+			response.setResponseHexCode("A01003003001");
 			return Response.status(401).entity(response).header("Access-Control-Allow-Origin", "*").build();
 		} else {
 			return Response.ok(PriorityManager.deletePriority(Priority)).header("Access-Control-Allow-Origin", "*").build();
@@ -111,7 +111,7 @@ public class Services {
 
 		switch (response.getResponseHexCode()) {
 		case "01":
-			response.setResponseMsg("A01003006001");
+			response.setResponseHexCode("A01003006001");
 			return Response.status(401).entity(response).build();
 		default:
 			return Response.ok(response).build();
