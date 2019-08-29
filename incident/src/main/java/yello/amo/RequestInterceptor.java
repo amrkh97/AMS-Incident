@@ -36,6 +36,7 @@ public class RequestInterceptor implements ContainerRequestFilter {
 		logData.setRequestURL(requestContext.getUriInfo().getAbsolutePath().toString());
 		
 		RequestLogManager.insertRequestData(logData);
+		/*
 		Enumeration<String> trialEnum = sr.getHeaderNames();
 		
 		Integer i = 0;
@@ -45,7 +46,7 @@ public class RequestInterceptor implements ContainerRequestFilter {
 			i++;
 		}
 		
-		
+		*/
 	}
 
 
