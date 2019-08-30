@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 import BLL.*;
 import Models.Callers.AddCallerModel;
 import Models.Callers.ServerResponse;
+import Models.Categories.GetByDepIDModel;
 import Models.Data.DataModel;
 import Models.Incident.*;
 import Models.Priority.PrioritiesData;
@@ -118,5 +119,23 @@ public class Services {
 		}
 
 	}
-
+	
+	@Path("incident/getMainDepartments")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getMainDepartments() {
+		
+		return Response.ok(CategoriesManager.getMainDepartments()).header("Access-Control-Allow-Origin", "*").build();
+	}
+	
+	@Path("incident/getCategoriesByDepID")
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getCategoriesByDepID(GetByDepIDModel model) {
+		
+		return Response.ok(CategoriesManager.getCategoriesByDepID(model)).header("Access-Control-Allow-Origin", "*").build();
+	}
+	
+	
 }
