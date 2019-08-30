@@ -23,9 +23,9 @@ public class CategoriesDAL {
 			
 			while (RS.next()) {
 				DepartmentsModel data = new DepartmentsModel();
-				data.setDep_ID(RS.getInt("Dep_ID"));
-				data.setDep_Name(RS.getString("Arab_Dep_Name"));
-				data.setDep_Name_Eng(RS.getString("Eng_Dep_Name"));
+				data.setDep_id(RS.getInt("Dep_ID"));
+				data.setDep_name(RS.getString("Arab_Dep_Name"));
+				data.setDep_name_eng(RS.getString("Eng_Dep_Name"));
 				requestLogData.add(data);
 			}
 			RS.close();

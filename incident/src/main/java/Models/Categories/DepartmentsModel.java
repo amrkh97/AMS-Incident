@@ -2,27 +2,28 @@ package Models.Categories;
 
 public class DepartmentsModel {
 	
-	private String dep_Name;
-	private String dep_Name_Eng;
-	private Integer dep_ID;
+	private String dep_name;
+	private String dep_name_eng;
+	private Integer dep_id;
 	
-	public String getDep_Name() {
-		return dep_Name;
+	public String getDep_name() {
+		return dep_name;
 	}
-	public void setDep_Name(String dep_Name) {
-		this.dep_Name = dep_Name;
+	public void setDep_name(String dep_name) {
+		this.dep_name = dep_name;
 	}
-	public Integer getDep_ID() {
-		return dep_ID;
+	public Integer getDep_id() {
+		return dep_id;
 	}
-	public void setDep_ID(Integer dep_ID) {
-		this.dep_ID = dep_ID;
+	public void setDep_id(Integer dep_id) {
+		this.dep_id = dep_id;
 	}
-	public String getDep_Name_Eng() {
-		return dep_Name_Eng;
+	public String getDep_name_eng() {
+		return dep_name_eng;
 	}
-	public void setDep_Name_Eng(String dep_Name_Eng) {
-		this.dep_Name_Eng = dep_Name_Eng;
+	public void setDep_name_eng(String dep_name_eng) {
+		this.dep_name_eng = dep_name_eng;
 	}
+	
 
 }
