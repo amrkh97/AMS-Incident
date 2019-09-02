@@ -34,7 +34,7 @@ public class CategoriesManager {
 		Connection intermediateConnection = DBManager.getDBConn();
 		TypesArray departmentsArray = new TypesArray();
 		try {
-			departmentsArray = CategoriesDAL.getCategoriesByDepID(model.getDep_ID(),intermediateConnection);
+			departmentsArray = CategoriesDAL.getCategoriesByDepID(model.getDep_id(),intermediateConnection);
 		} finally {
 			try {
 				intermediateConnection.close();

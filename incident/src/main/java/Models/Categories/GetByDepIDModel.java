@@ -2,13 +2,13 @@ package Models.Categories;
 
 public class GetByDepIDModel {
 
-	private Integer dep_ID;
+	private Integer dep_id;
 
-	public Integer getDep_ID() {
-		return dep_ID;
+	public Integer getDep_id() {
+		return dep_id;
 	}
 
-	public void setDep_ID(Integer dep_ID) {
-		this.dep_ID = dep_ID;
+	public void setDep_id(Integer dep_id) {
+		this.dep_id = dep_id;
 	}
 }
